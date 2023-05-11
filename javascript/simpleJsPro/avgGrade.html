@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Average</title>
+    <!-- Internal CSS -->
+    <style>
+        table, td, tr, th{
+            border: 1px black solid;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+    <!-- Internal js -->
+    <script>
+        // Gets the average of 3 student grades
+        function avg(g1, g2, g3){
+            var gradeAvg = (g1 + g2 + g3)/3;
+            return gradeAvg;
+        }
+        // Determines the letter grade based of the student's grade average
+        function letterGrade(a){
+            var letGrade;
+            if(a >= 90){
+                letGrade = "A";
+            }else if(a >= 80){
+                letGrade = "B";
+            }else if(a >= 70){
+                letGrade = "C";
+            }else if(a >= 60){
+                letGrade = "D";
+            }else{
+                letGrade = "F";
+            }
+            return letGrade;
+        }
+        // Adds the needed information into the table
+        function display(sName, grade1, grade2, grade3, av, lett){
+            document.getElementById("stName").innerHTML = sName;
+            document.getElementById("grd1").innerHTML = grade1;
+            document.getElementById("grd2").innerHTML = grade2;
+            document.getElementById("grd3").innerHTML = grade3;
+            document.getElementById("averageGrd").innerHTML = av;
+            document.getElementById("letterGrd").innerHTML = lett;
+        }
+        // Main variable the gets the average and letter grade and displays them in the table
+        function calc(){
+            var studentName = document.getElementById("name").value;
+            var firstGrade = parseInt(document.getElementById("grade1").value);
+            var secondGrade = parseInt(document.getElementById("grade2").value);
+            var thirdGrade = parseInt(document.getElementById("grade3").value);
+            var gAvg = avg(firstGrade, secondGrade, thirdGrade);
+            var letter = letterGrade(gAvg);
+            display(studentName, firstGrade, secondGrade, thirdGrade, gAvg, letter);
+        }
+    </script>
+</head>
+<body>
+    <label>Student's Name</label>
+    <input type="text" id="name"> <br>
+    <label style="margin-right: 28px;" >First Grade</label>
+    <input id="grade1" type="text"> <br>
+    <label style="margin-right: 10px;">Second Grade</label>
+    <input id="grade2" type="text"> <br>
+    <label style="margin-right: 21px;">Third Grade</label>
+    <input id="grade3" type="text"> <br>
+    <button onclick="calc()">Calculate</button>
+    <!-- Table displaying the student's name, first grade, second grade, third grade, average grade, and letter grade -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Grade1</th>
+            <th>Grade2</th>
+            <th>Grade3</th>
+            <th>Average</th>
+            <th>Letter</th>
+        </tr>
+        <tr>
+            <td id="stName"></td>
+            <td id="grd1"></td>
+            <td id="grd2"></td>
+            <td id="grd3"></td>
+            <td id="averageGrd"></td>
+            <td id="letterGrd"></td>
+        </tr>
+    </table>
+</body>
+</html>

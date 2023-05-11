@@ -1,0 +1,44 @@
+
+.row{
+    text-align: center;
+}
+
+.green{
+    background-color: limegreen;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.pink{
+    background-color: pink;
+}
+.magenta{
+    background-color: magenta;
+}
+.yellow{
+    background-color: yellow;
+}
+.orange{
+    background-color: orange;
+}
+.purple{
+    background-color: purple;
+}
+.card{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    
+}
+.hidden{
+    background-color: lightgray;
+}
+.card:hover{
+    border: 1px solid red;
+}
+#secret{
+    display: none;
+}

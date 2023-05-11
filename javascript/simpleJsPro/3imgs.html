@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3imgs</title>
+    <script>
+        // Makes the array of images and counting vars
+        var count = 0;
+        var count1 = 1;
+        var count2 = 2;
+        var images = ["pizza.jpg", "pancakes.jpg", "imhungary.jpg"];
+        // Intial load of the array
+        function loadArray(){
+            document.getElementById("imgs").src=images[0];
+            document.getElementById("imgs1").src=images[1];
+            document.getElementById("imgs2").src=images[2];
+        }
+        // Moves all images right through the array
+        function right(){
+            count--;
+            if(count < 0){
+                count = 2;
+            }
+            count1 = count + 1;
+            if(count1 > 2){
+                count1 = 0;
+            }
+            count2 = count1 + 1;
+            if(count2 > 2){
+                count2 = 0;
+            }
+            document.getElementById("imgs").src=images[count];
+            document.getElementById("imgs1").src=images[count1];
+            document.getElementById("imgs2").src=images[count2];
+        }
+        // Moves all images left through the array
+        function left(){
+            count++;
+            if(count > 2){
+                count = 0;
+            }
+            count1 = count + 1;
+            if(count1 > 2){
+                count1 = 0;
+            }
+            count2 = count1 + 1;
+            if(count2 > 2){
+                count2 = 0;
+            }
+            document.getElementById("imgs").src=images[count];
+            document.getElementById("imgs1").src=images[count1];
+            document.getElementById("imgs2").src=images[count2];
+        }
+    </script>
+</head>
+<body onload="loadArray()">
+    <div style="text-align: center;">
+        <img style="width: 400px; height: 400px;" id="imgs" src="" alt="">
+        <img style="width: 400px; height: 400px;" id="imgs1" src="" alt="">
+        <img style="width: 400px; height: 400px;" id="imgs2" src="" alt=""> <br>
+    </div>
+
+    <div style="text-align: center;">
+        <button id="left" onclick="left()"><</button>
+        <button id="right" onclick="right()">></button>
+    </div>
+    
+</body>
+</html>

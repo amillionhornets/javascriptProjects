@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csv</title>
+    
+</head>
+<body>
+    <!-- <script src="app.js"></script> -->
+    <div style="border: 1px solid black; width: 25%; background-color: black; color: white;">
+        <p>
+            <ol>
+                <li>Add</li>
+                <li>View All Records</li>
+                <li>Update Record</li>
+                <li>Delete Record</li>
+            </ol>
+        </p>
+    </div> <br>
+    <label>Name:</label>
+    <input type="text" id="lead"> <br>
+    <label>Title:</label>
+    <input type="text" id="title"> <br>
+    <label>Phone:</label>
+    <input type="text" id="phone"> <br>
+    <label>Notes:</label>
+    <input type="text" id="notes"> <br>
+    <label>Option(Enter 1-4):</label>
+    <input type="text" id="num">
+    
+    <button onclick="userChoice()">Save</button>
+    <p id="test"></p>
+    <!-- <script type="text/javascript" src="mainapp.js"></script> -->
+    <script>
+        function userChoice(){
+    let choice = document.getElementById("num").value;
+    try{
+        if(choice < 0){
+        throw "Entered Number is less than zero"
+    }else if(choice > 4){
+        throw "Entered Number is greater than 4"
+    }else if(choice == ""){
+        throw "No number was entered"
+    }else{
+        switch(document.getElementById("num").value){
+            case "1":
+                addData();
+                break;
+            case "2":
+                showData();
+                break;
+            case "3":
+                updateRecord();
+                break;
+            case "4":
+                deleteRecord();
+                break;
+        }   
+    }
+}
+catch(err){
+    alert("Error " + err)
+}
+}
+function addData(){
+    let lead = document.getElementById("lead").value;
+    let title = document.getElementById("title").value;
+    let phone = document.getElementById("phone").value;
+    let notes = document.getElementById("notes").value;
+    let transferArray = [lead, title, phone, notes];
+    let toCsvArray = [];
+    for(let i = 0; i < transferArray.length; i++){
+        toCsvArray.push(transferArray[i])
+        if(transferArray.length == i + 1){
+            toCsvArray.push(",")
+        }
+    }
+    // let csvContent = [];
+    
+    moveToCSV(toCsvArray);
+}
+async function showData(){
+    const response = await fetch('dylan.csv');
+    const data = await response.text();
+    const table = data.split('\n').slice(0);
+    table.forEach(row => {
+        const columns = row.split(',');
+        const lead = columns[0];
+        const title = columns[1]
+        const phone = columns[2];
+        const notes = columns[3]
+        console.log(lead, title, phone, notes);
+    });
+}
+function updateRecord(){
+
+}
+function deleteRecord(){
+}
+var fs;
+
+var fs = require('fs');
+function moveToCSV(transferArray){
+    alert(transferArray[0])
+    for(let i = 0; i < transferArray.length; i++){
+        fs.appendFile('dylan.csv', transferArray[i], function(err){
+        if(err) console.log(err);
+        else console.log(transferArray[i]);})
+        }
+    }
+    </script>
+</body>
+</html>

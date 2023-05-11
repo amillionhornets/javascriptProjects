@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image array</title>
+    <script>
+        // Creates an array of images
+        var img1 = new Image(400, 400);
+        img1.src = "imhungary.jpg"
+        var img2 = new Image(400, 400);
+        img2.src = "pancakes.jpg"
+        var img3 = new Image(400, 400);
+        img3.src = "pizza.jpg"
+        var imgs = [img1, img2, img3];
+        // Counter determines the position in the array of imgs
+        var counter = 0;
+        // Loads the first img in the array onto the page
+        function firstImg(){
+            document.body.appendChild(imgs[0]);
+        }
+        // Deletes the last img. Adds 1 to counter. Adds next img
+        function right(){
+            document.body.removeChild(imgs[counter]);
+            counter++;
+            if(counter > 2){ 
+                counter = 0;
+            }
+            document.body.appendChild(imgs[counter]);
+        }
+        // Deletes the last img. Subs 1 from the counter. Adds next img
+        function left(){
+            document.body.removeChild(imgs[counter]);
+            counter--;
+            if(counter < 0){
+                counter = 2;
+            }
+            document.body.appendChild(imgs[counter]);
+        }
+    </script>
+</head>
+<!-- Onload the body will append the first img in the imgs array-->
+<body style="height: 400px;" onload="firstImg()"> 
+    <!-- On click the button will run left function  -->
+    <input type="button" onclick="left()" id="left" value="<"></input> 
+    <!-- On click the button will run the right function  -->
+    <button onclick="right()" id="right">></button> 
+    <br>
+
+</body>
+</html>

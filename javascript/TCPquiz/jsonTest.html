@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var superHeros = {
+			"squadName": "Super hero squad",
+			"homeTown": "Metro City",
+			"formed": 2016,
+			"secretBase": "Super tower",
+			"active": true,
+			"members": [
+			{
+				"name": "Molecule Man",
+				"age": 29,
+				"secretIdentity": "Dan Jukes",
+				"powers": [
+					"Radiation resistance",
+					"Turning tiny",
+					"Radiation blast"
+				]
+			},
+			{
+				"name": "Madame Uppercut",
+				"age": 39,
+				"secretIdentity": "Jane Wilson",
+				"powers": [
+					"Million tonne punch",
+					"Damage resistance",
+					"Superhuman reflexes"
+				]
+			},
+			{
+			"name": "Eternal Flame",
+			"age": 1000000,
+			"secretIdentity": "Unknown",
+			"powers": [
+				"Immortality",
+				"Heat Immunity",
+				"Inferno",
+				"Teleportation",
+				"Interdimensional travel"
+			]
+		}
+	]
+}
+    function fun(){
+        document.getElementById("test").innerHTML = superHeros.members[2].powers[0];
+        document.getElementById("test1").innerHTML = superHeros.members[0].name;
+    }
+    </script>
+</head>
+<body>
+    <p id="test">This is a test</p>
+    <p id="test1">This is a test pt2</p>
+    <button onclick="fun()">HI</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Retrives the numbers inside the user inputs and adds them together
+        function add(){
+            var first = document.getElementById("num1").value;
+            var second = document.getElementById("num2").value;
+            let output = parseInt(first) + parseInt(second);
+            document.getElementById("equation").innerHTML = "Equation = " + first + " + " + second + " = " + output;
+        }
+        // Retrives the numbers inside the user inputs and subtracts them 
+        function sub(){
+            var first = document.getElementById("num1").value;
+            var second = document.getElementById("num2").value;
+            let output = parseInt(first) - parseInt(second);
+            document.getElementById("equation").innerHTML = "Equation = " + first + " - " + second + " = " + output;
+        }
+        // Retrives the numbers inside the user inputs and multiplys them together
+        function multi(){
+            var first = document.getElementById("num1").value;
+            var second = document.getElementById("num2").value;
+            let output = parseInt(first) * parseInt(second);
+            document.getElementById("equation").innerHTML = "Equation = " + first + " * " + second + " = " + output;
+        }
+        // Retrives the numbers inside the user inputs and divides them 
+        function divide(){
+            var first = document.getElementById("num1").value;
+            var second = document.getElementById("num2").value;
+            let output = parseInt(first) / parseInt(second);
+            document.getElementById("equation").innerHTML = "Equation = " + first + " / " + second + " = " + output;
+        }
+    </script>
+</head>
+<body>
+    <!-- Asks the user for the first and second number -->
+    <label>First Number:</label> 
+    <input type="text" id="num1" style="margin-left: 17px;">
+    <br>
+    <label for="num2">Second Number:</label>
+    <input type="text" id="num2">
+    <!-- On button clicks runs respective function for equations and displays the equation in the paragraph -->
+    <p id="equation">Equation = </p>
+    <input type="button" id="+" value="+" onclick="add()">
+    <input type="button" id="-" value="-" onclick="sub()">
+    <input type="button" id="*" value="*" onclick="multi()">
+    <input type="button" id="/" value="/" onclick="divide()">
+</body>
+</html>

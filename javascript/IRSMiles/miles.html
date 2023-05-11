@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRS Mileage</title>
+    <script>
+        function makeTable(){
+            // These variables will get the date, starting miles, ending miles, total miles drove, and the destination of the user.
+            // They will also define and create the headers, table, and tr.
+            let uDate = document.getElementById("date").value;
+            let uStrtMile = document.getElementById("startingMiles").value;
+            let uEndMile = document.getElementById("endingMiles").value;
+            let uDestination = document.getElementById("destination").value;
+            let totalMiles = uEndMile - uStrtMile;
+            // This try will look to see if totalMiles is negative, if there are any empty fields, and if the user entered real numbers.
+            try{
+                if(Math.sign(totalMiles) == -1) {
+                    throw "Negative Total Miles";
+                }else if(uStrtMile == "" || uEndMile == "" || uDate == "" || uDestination == ""){
+                    throw "Empty Field/s"
+                }else if(isNaN(totalMiles)){
+                    throw "Did Not Enter a Real Number"
+                }else{
+                    let headers = ["Date", "Beginning Miles", "Ending Miles", "Destination", "Total Miles"];
+                    let userInputs = [uDate, uStrtMile, uEndMile, uDestination, totalMiles];
+                    let table = document.createElement("table");
+                    let tr = document.createElement("tr");
+                    // This for loop will create ths, give them a textContent from the headers array, and append them to the table.
+                    for(let i = 0;i < headers.length; i++){
+                        let th = document.createElement("th");
+                        th.textContent = headers[i];
+                        th.style.border = "1px solid black";
+                        th.style.borderCollapse = "collapse";
+                        table.appendChild(th);
+                    }
+                    // This for loop will create tds, give them data from user inputs then append them to the tr.
+                    for (let index = 0; index < userInputs.length; index++) {
+                        let td = document.createElement("td");
+                        td.textContent = userInputs[index];
+                        td.style.border = "1px solid black";
+                        td.style.borderCollapse = "collapse";
+                        tr.appendChild(td);
+                    }
+                    // Appends the tr to the table. Then the table to the body, and styles the table.
+                    table.setAttribute("class", "tables");
+                    table.appendChild(tr);
+                    table.style.border = "1px solid black";
+                    table.style.borderCollapse = "collapse";
+                    document.body.appendChild(table);
+                    // Resets all the user fields to empty.
+                    uDate = document.getElementById("date").value = "";
+                    uStrtMile = document.getElementById("startingMiles").value = "";
+                    uEndMile = document.getElementById("endingMiles").value = "";
+                    uEndMile = document.getElementById("destination").value = "";
+                }
+            }catch(err){ //If any error comes up the user will be notified and 
+                window.alert("Error: " + err);
+            }
+        }
+        // Clears all the tables
+        function clearTables(){
+            let allTables = document.querySelectorAll(".tables");
+            for(let index = 0; index < allTables.length; index++){
+                allTables[index].remove();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="date">Input Date:</label>
+        <input type="date" id="date"> <br>
+        <label for="startMil">Beginning Miles:</label>
+        <input type="text" id="startingMiles"> <br>
+        <label for="endMil">End Miles:</label>
+        <input type="text" id="endingMiles"> <br>
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination"> <br>
+        <button onclick="makeTable()">Save</button>
+        <button onclick="clearTables()">Clear</button>
+    </div>
+</body>
+</html>

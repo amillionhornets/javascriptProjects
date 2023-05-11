@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+    <script>
+    function comparePali(){
+        let userInput = document.getElementById("userPali").value;
+        userInput = userInput.toLowerCase();
+        let userInputSplit = userInput.split('');
+        let inputSplit = userInput.split('');
+        let reverseInput = inputSplit.reverse();
+        let joinedInput = reverseInput.join();
+        window.alert(reverseInput);
+        if(joinedInput == userInputSplit){
+            document.getElementById("result").innerHTML = "This is a palindrome!";
+        }else{
+            document.getElementById("result").innerHTML = "This isn't a palindrome."
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>Enter a Palindrome</h1>
+    <input type="text" id="userPali">
+    <input type="submit" onclick="comparePali()" id="">
+    <p id="result"></p>
+</body>
+</html>

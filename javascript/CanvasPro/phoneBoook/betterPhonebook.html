@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function insertTable(){
+            // Gets all the values out of the inputs and stores them in variables
+            let fName = document.getElementById("firstName").value;
+            let lName = document.getElementById("lastName").value;
+            let pNum = document.getElementById("phoneNum").value;
+            let userinputs = [fName, lName, pNum];
+            let headers = ["First Name", "Last Name", "Phone Number", "Delete"];
+            let table = document.createElement("table");
+            let tr = document.createElement("tr");
+            // Creates and populates th in from the array headers
+            for (let a = 0; a < headers.length; a++) {
+                let th = document.createElement("th");
+                th.innerHTML = headers[a];
+                th.style.border="1px solid black";
+                table.appendChild(th);
+            }
+            // Creates and populates tds from userinputs array
+            for(let i = 0; i < userinputs.length; i++){
+                let td = document.createElement("td");
+                td.innerHTML = userinputs[i];
+                td.style.border="1px solid black";
+                tr.appendChild(td);
+            }
+            // Creates the delete button, appends it to the table, and gives it a function that deletes its parent table
+            let deleteButton = document.createElement("button")
+            deleteButton.innerHTML = "DELETE"
+            deleteButton.onclick = function(){
+                let tr = event.target.parentNode;
+                let table = tr.parentNode;
+                table.remove(table);
+            }
+            tr.appendChild(deleteButton);
+            // Appends the tr to the table, appends the table to the body, and styles the borders
+            table.appendChild(tr);
+            table.style.border="1px solid black";
+            table.style.borderCollapse="collapse";
+            document.body.appendChild(table);
+            // Resets the inputs to a blank value
+            document.getElementById("firstName").value = '';
+            document.getElementById("lastName").value = '';
+            document.getElementById("phoneNum").value = '';
+        }
+    </script>
+</head>
+<body>
+    <label for="">Enter First Name:</label>
+    <input type="text" id="firstName"> <br>
+    <label for="">Enter Last Name :</label>
+    <input type="text" id="lastName"> <br>
+    <label for="">Enter Phone Num:</label>
+    <input type="text" id="phoneNum"><button onclick="insertTable()">Add</button> 
+</body>
+</html>

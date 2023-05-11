@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+.column{
+    float: left;
+    width: 16.665%;
+    margin-bottom: 0;border: 1px solid grey;
+}
+.row::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+#object{
+    margin: 14px;
+    background-color: lightgray;
+    width: 10%;
+}

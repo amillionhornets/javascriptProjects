@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Left Stair
+        function leftStair(){
+            // Gets the user rows and columns. also creates table element
+            let uRows =parseInt(document.getElementById("userRows").value);
+            let uColumns = parseInt(document.getElementById("userRows").value);
+            let table = document.createElement("table");
+            // Calls the makeTableLeft and appends the table to the body
+            for (let index = 0; index < uRows; index++) {
+                makeTableLeft(uColumns, table);
+                document.body.appendChild(table);
+                uColumns--;
+            }
+            let hr = document.createElement("hr")
+            document.body.appendChild(hr);
+        }
+        // Creates a tr and appends astericks to td to be appended to trs and then appended on to the table
+        function makeTableLeft(a, tabl){
+            let tr = document.createElement("tr");
+            for (let index = a; index > 0; index--) {
+                let td = document.createElement("td");
+                td.innerHTML = "*";
+                tr.appendChild(td);
+            }
+            a--;
+            tabl.appendChild(tr);
+        }
+        // Right Staircase
+        function rightStair(){
+            // Gets the user rows and columns. also creates table element
+            let uRows = parseInt(document.getElementById("userRows").value);
+            let uColumns = parseInt(document.getElementById("userRows").value)
+            let count = 0;
+            let table = document.createElement("table");
+            // Calls the makeTableRight and appends the table to the body
+            for (let index = 0; index < uRows; index++) {
+                makeTableRight(uColumns, table, count);
+                document.body.appendChild(table);
+                count++;
+            }
+            let hr = document.createElement("hr")
+            document.body.appendChild(hr);
+        }
+        // Makes tr, appends tds with *s to tr, appends trs to table.
+        function makeTableRight(a, tabl, count){
+            let tr = document.createElement("tr");
+            for (let index = 0; index < a; index++) {
+                let td = document.createElement("td");
+                if(index < count){
+                    td.innerHTML = "";
+                } else{
+                    td.innerHTML = "*";
+                }
+                tr.appendChild(td);
+            }
+            tabl.appendChild(tr);
+        }
+        // Makes the Star
+        function insertStar(){
+            // Creates the user rows. columns, amount of astericks needed, and table.
+            let uRows = parseInt(document.getElementById("userRows").value);
+            let count = 0;
+            let table1 = document.createElement("table");
+            let atsterick1 = 1;
+            // Makes the top half of the star and then appends it to the body
+            for (let a = 0; a < Math.ceil(uRows/2); a++) {
+                count = 0;
+                makeStarHalf(uRows, table1, atsterick1, count);
+                document.body.appendChild(table1);
+                atsterick1+=2;
+            }
+            atsterick1-=2;
+            
+            // Makes the bottom star and then appends it to the body
+            for (let a = 0; a <Math.ceil(uRows/2); a++) {
+                makeStarHalf(uRows, table1, atsterick1, count);
+                document.body.appendChild(table1);
+                atsterick1-=2;
+            }
+            // Creates and appends an hr to seperate the asterick shapes
+            let hr = document.createElement("hr")
+            document.body.appendChild(hr);
+        }
+        function makeStarHalf(rows, table, atstericks, count){
+            // Creates the tr and the amount of white space and tr
+            let tr = document.createElement("tr");
+            let space = Math.ceil((rows - atstericks)/2);
+            if(space == NaN){
+                space = 0;
+            }
+            // First checks to make sure user input is an odd number then makes sure the number is greater than 1. If it passes both of those tests it will make half of the star and append it to the tr.
+            if(rows%2 == 0){
+                window.alert("Please enter a odd number.")
+            }else if(rows < 1){
+                window.alert("Please enter a number that is equal to 1 or greater.");
+            }else{
+                for (let i = 0; i < rows; i++) {
+                    let td = document.createElement("td");
+                    if(count < space){
+                        td.textContent = "";
+                        tr.appendChild(td);
+                        count++;
+                    }else if(count >= space){
+                        td.textContent = "*";
+                        tr.appendChild(td);
+                        if(atstericks < count){
+                            count = 0;
+                            space = (rows - atstericks)/2;
+                            
+                            
+                        }
+                        
+                        count++;
+                    }
+
+                }
+                // Appends the tr to the table.
+                table.appendChild(tr);
+                count=0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <label>How many Rows and Columns:</label>
+    <input type="text" id="userRows"><br>
+    <button onclick="leftStair()">Left Staircase</button>
+    <button onclick="rightStair()">Right Staircase</button>
+    <button onclick="insertStar()">Star</button>
+</body>
+</html>
+

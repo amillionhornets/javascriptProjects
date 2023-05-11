@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script >
+        function raiseToPower(){
+            let num = document.getElementById("firstNum").value;
+            let expo = document.getElementById("exponent").value;
+            // let result = num**expo;
+            let result = Math.pow(num, expo);
+            document.getElementById("result").textContent = result;
+            // let d = new Date();
+            // document.getElementById("result").textContent = d;
+        }
+    </script>
+</head>
+<body>
+    <label>Number:</label>
+    <input type="text" id="firstNum"> <br>
+    <label>Exponent:</label>
+    <input type="text" id="exponent">
+    <button onclick="raiseToPower()">**</button>
+    <p id="result"></p>
+</body>
+</html>

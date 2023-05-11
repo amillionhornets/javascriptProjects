@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Gets and stores what is being dragged
+        function drag(event){
+            event.dataTransfer.setData("Text", event.target.id);
+        }
+        // Allows the element to be dropped into a div instead of the body or returning
+        function allowDrop(event){
+            event.preventDefault();
+        }
+        // Drops the element
+        function drop(event){
+            event.preventDefault();
+            var data = event.dataTransfer.getData("Text");
+            event.target.appendChild(document.getElementById(data));
+        }
+        // Shows if the answer is wrong or right
+        function displayRorW(correctOrWrong){
+            for (let i = 0; i < 4; i++) {
+                let counter = "correct" + (i + 1);
+                if (correctOrWrong[i] == 1){
+                    document.getElementById(counter).innerHTML = "CORRECT!";
+                    document.getElementById(counter).style.backgroundColor = "green";
+                }else{
+                    document.getElementById(counter).innerHTML = "WRONG";
+                    document.getElementById(counter).style.backgroundColor = "red";
+                }
+            }
+        }
+        // Will grade the quiz
+        function gradeQuiz(){
+            let correct = 0;
+            let uAnswers = [];
+            let rightOrWrong = [];
+            let cAnswers = ['445', '21', '53', '22'];
+            for(let a = 1; a < 5; a++){ //Creates an array of the user answers
+                let pVal = document.getElementById(a).textContent;
+                uAnswers.push(pVal);
+            }
+            for (let i = 0; i < 4;i++){ //Compares the user answers to the correct answers
+                if(uAnswers[i] === cAnswers[i]){
+                    correct++;
+                    rightOrWrong.push(1);
+                }else{
+                    rightOrWrong.push(0);
+                }
+            }
+            document.getElementById("correct").innerHTML ="You got a " + 25*correct + "%!";
+            displayRorW(rightOrWrong);
+        }
+    </script>
+</head>
+<body>
+    <!-- First Question and answer -->
+    <div class="row">
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;"><p draggable="true" ondragstart="drag(event)" id="object1">53</p></div>
+        <div class="column")><p>HTTPS:</p></div>
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;" id="1"></div><p id="correct1"></p><br>
+    </div>
+    <!-- Second question and answer -->
+    <div class="row">
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;"><p draggable="true" ondragstart="drag(event)" id="object2">22</p></div>
+        <div class="column")><p draggable="false">FTP:</p></div>
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;" id="2"></div><p id="correct2"></p><br>
+    </div> 
+    <!-- Third question and answer -->
+    <div class="row">
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;"><p draggable="true" ondragstart="drag(event)" id="object3">21</p></div>
+        <div class="column")><p>DNS:</p></div>
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;" id="3"></div><p id="correct3"></p><br>
+    </div>
+    <!-- Fourth question and answer -->
+    <div class="row">
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;"><p draggable="true" ondragstart="drag(event)" id="object4">445</p></div>
+        <div class="column")><p draggable="false">SSH:</p></div>
+        <div class="column" ondragover="allowDrop(event)" ondrop="drop(event)" style="height: 50px;" id="4"></div><p id="correct4"></p><br>
+    </div>
+    <!-- Grade button and displays what percent you got on the quiz -->
+    <div>
+        <button onclick="gradeQuiz()">Grade</button>
+        <p id="correct"></p>
+    </div>
+</body>
+</html>

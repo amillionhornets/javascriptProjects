@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script>
+        var videos = ["test2.mp4", "test.mp4","test3.mp4","test4.mp4"];
+        var x = 0;
+        var save = "";
+        function addTest(){
+            if(x < 1){
+                document.getElementById("featured").src = videos[0];
+            }else{
+                var b = parseInt(Math.floor(Math.random() * 4));
+                while (save === b || b > 4 || b < 0) {
+                    if(save != b){
+                        break;
+                    }                 
+                    b = parseInt(Math.floor(Math.random() * 4));
+                }
+                document.getElementById("featured").src = videos[b];
+                console.log(parseInt(b));
+                save = b;
+            }
+            x++;
+        }
+        
+        var intervalSec = setInterval(addTest, [500]);
+    </script>
+</head>
+<body>
+    <iframe src="test.mp4" id="featured">
+</body>
+</html>
+

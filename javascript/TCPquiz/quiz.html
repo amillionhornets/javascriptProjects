@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCP/IP Port Quiz</title>
+    <script>
+        var correctAnswers = 0;
+        function checkAnswers(){
+            correctAnswers = 0;
+            // The first for loop keeps track of what question is being checked
+            for(let a = 0; a < 10; a++){
+                let spaceCounter = a;
+                spaceCounter++;
+                let place = "q" + spaceCounter;
+                let place2 = "label" + spaceCounter;
+                let answer = document.getElementsByName(place);
+                // The second for loop will loop through each question and check for if the right answer is checked
+                for(let i = 0; i < 4; i++){
+                    if(answer[i].checked && answer[i].value == 1){ // If the user is right the background of the label will become green
+                    correctAnswers+=1;
+                    document.getElementById(place2).style.backgroundColor = "green";
+                    break;
+                    }else{ // If the user is wrong the background of the label will become red
+                        document.getElementById(place2).style.backgroundColor = "red";
+                    }
+                }
+            }
+            // Displays the amount of correct answers the user got out of 10
+            document.getElementById("results").innerHTML = "You got " + correctAnswers + " out of 10";
+            // Removes the submit button after all the questions are turned in
+            document.getElementById("submit").style.display = "none";
+        }
+    </script>
+</head>
+<body style="font-size: 2rem;">
+        <!-- Q1 about Secure Shell -->
+        <label id="label1">1. What port aligns with the Secure Shell(SSH)?</label> <br>
+        <label><input type="radio" name="q1" value="1">A) 22</label><br>
+        <label><input type="radio" name="q1" value="0">B) 123</label><br>
+        <label><input type="radio" name="q1" value="0">C) 331</label><br>
+        <label><input type="radio" name="q1" value="0">D) 54</label><br>
+        <br>
+        <!-- Q2 about HTTPS -->
+        <label id="label2">2. What port aligns with Hyper Text Transfer Protocol Secure (HTTPS)?</label> <br>
+        <label><input type="radio" name="q2" value="0">A) 14</label> <br>
+        <label><input type="radio" name="q2" value="0">B) 2734</label><br>
+        <label><input type="radio" name="q2" value="1">C) 443</label><br>
+        <label><input type="radio" name="q2" value="0">D) 110</label><br>
+        <br>
+        <!-- Q3 about DNS -->
+        <label id="label3">3. What port aligns with Domain Name System(DNS)?</label> <br>
+        <label><input type="radio" name="q3" value="0">A) 331</label><br>
+        <label><input type="radio" name="q3" value="0">B) 48</label><br>
+        <label><input type="radio" name="q3" value="0">C) 1255</label><br>
+        <label><input type="radio" name="q3" value="1">D) 53</label><br>
+        <br>
+        <!-- Q4 about HTTP -->
+        <label id="label4">4. What port aligns with Hyper Text Transfer Protocol(HTTP)?</label> <br>
+        <label><input type="radio" name="q4" value="0">A) 6781</label><br>
+        <label><input type="radio" name="q4" value="1">B) 80</label><br>
+        <label><input type="radio" name="q4" value="0">C) 982</label><br>
+        <label><input type="radio" name="q4" value="0">D) 69</label><br>
+        <br> 
+        <!-- Q5 about SLP -->
+        <label id="label5">5. What port aligns with Service Location Protocol(SLP)?</label> <br>
+        <label><input type="radio" name="q5" value="0">A) 854</label><br>
+        <label><input type="radio" name="q5" value="0">B) 420</label><br>
+        <label><input type="radio" name="q5" value="1">C) 427</label><br>
+        <label><input type="radio" name="q5" value="0">D) 89</label><br>
+        <br>
+        <!-- Q6 FTP command control -->
+        <label id="label6">6. What port aligns with File Transfer Protocol(FTP) Command Control?</label> <br>
+        <label><input type="radio" name="q6" value="0">A) 567</label><br>
+        <label><input type="radio"  name="q6" value="1">B) 21</label><br>
+        <label><input type="radio"  name="q6" value="0">C) 9321</label><br>
+        <label><input type="radio"  name="q6" value="0">D) 2594</label><br>
+        <br>
+        <!-- Q7 about SMTP -->
+        <label id="label7">7. What port aligns with Simple Mail Transfer Protocol (SMTP)?</label> <br>
+        <label><input type="radio" name="q7" value="0">A) 9</label><br>
+        <label><input type="radio" name="q7" value="0">B) 556</label><br>
+        <label><input type="radio" name="q7" value="1">C) 25</label><br>
+        <label><input type="radio" name="q7" value="0">D) 6897</label><br>
+        <br>
+        <!-- Q8 about POP3 -->
+        <label id="label8">8. What port aligns with Post Office Protocol(POP3)?</label> <br>
+        <label><input type="radio" name="q8" value="0">A) 331</label><br>
+        <label><input type="radio" name="q8" value="0">B) 48</label><br>
+        <label><input type="radio" name="q8" value="0">C) 1255</label><br>
+        <label><input type="radio" name="q8" value="1">D) 110</label><br>
+        <br>
+        <!-- Q9 about RDP -->
+        <label id="label9">9. What port aligns with Remote Desktop(RDP)?</label> <br>
+        <label><input type="radio" name="q9" value="0">A) 742</label><br>
+        <label><input type="radio" name="q9" value="0">B) 12</label><br>
+        <label><input type="radio" name="q9" value="0">C) 500</label><br>
+        <label><input type="radio" name="q9" value="1">D) 3389</label><br>
+        <br>
+        <!-- Q10 about NNTP -->
+        <label id="label10">10. What port aligns with Network News Protocol(NNTP)?</label> <br>
+        <label><input type="radio" name="q10" value="0">A) 91</label><br>
+        <label><input type="radio" name="q10" value="0">B) 4391</label><br>
+        <label><input type="radio" name="q10" value="1">C) 119</label><br>
+        <label><input type="radio" name="q10" value="0">D) 727</label>
+        <br> 
+        <p id="results"></p>
+        <input type="submit" onclick="checkAnswers()" id="submit">
+</body>
+</html>
